@@ -3,13 +3,16 @@ on:
     branches:
       - dev
 
+pool:
+  vmImage: 'ubuntu-latest'
 
-
-steps:
- - script: 
- - task: PublishBuildArtifacts@1
-   displayName: 'Publish notification as artifact'
-   inputs:
-     PathtoPublish: '$(System.DefaultWorkingDirectory)/notification.txt'
-     ArtifactName: 'PushNotification'
-     publishLocation: 'Container'
+jobs:
+- job: BuildAndPublish
+  steps:
+  - script: 
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish notification as artifact'
+    inputs:
+      PathtoPublish: '$(System.DefaultWorkingDirectory)/notification.txt'
+      ArtifactName: 'PushNotification'
+      publishLocation: 'Container'
