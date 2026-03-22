@@ -7,11 +7,11 @@ jobs:
   BuildAndPublish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.4.2
+      - uses: actions/checkout@v4
       - name: Create notification file
         run: echo "Build and publish job completed successfully" > notification.txt
       - name: Publish notification as artifact
-        uses: actions/upload-artifact@v4.4.2
+        uses: actions/upload-artifact@v4
         with:
           name: PushNotification
           path: notification.txt
