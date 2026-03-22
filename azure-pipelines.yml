@@ -1,0 +1,18 @@
+trigger:
+  branches:
+    include:
+      - dev
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - checkout: self
+  - script: echo "Build and publish job completed successfully" > notification.txt
+    displayName: 'Create notification file'
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish notification as artifact'
+    inputs:
+      PathtoPublish: '$(System.DefaultWorkingDirectory)/notification.txt'
+      ArtifactName: 'PushNotification'
+      publishLocation: 'Container'
