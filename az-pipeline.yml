@@ -1,6 +1,24 @@
 on:
   push:
-    main
+    dev
+
+pool:
+  vmImage: 'ubuntu-latest'
 
 steps:
+  - script: |
+    echo "New Code recieved whenever there is a push in the repo branch" > notification.txt
+    echo "" >> notification.txt
+    echo "Branch:       $(Build.SourceBranchName)" >> notification.txt
+    echo "Commit:       $(Build.SourceVersion)" >> notification.txt
+    echo "Triggered by: $(Build.RequestedFor)" >> notification.txt
+    echo "Pipeline run: $(Build.BuildNumber)" >> notification.txt
+    echo "Date (UTC):   $(date -u '+%Y-%m-%d %H:%M:%S')" >> notification.txt
+  displayName: 'Create notification text file'
 
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish notification as artifact'
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/notification.txt'
+    ArtifactName: 'PushNotification'
+    publishLocation: 'Container'
