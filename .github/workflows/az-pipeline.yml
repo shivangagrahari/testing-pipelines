@@ -6,10 +6,10 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: 
-   - task: PublishBuildArtifacts@1
-     displayName: 'Publish notification as artifact'
-      inputs:
-       PathtoPublish: '$(System.DefaultWorkingDirectory)/notification.txt'
-       ArtifactName: 'PushNotification'
-       publishLocation: 'Container'
+ - script: 
+  - task: PublishBuildArtifacts@1
+   displayName: 'Publish notification as artifact'
+    inputs:
+     PathtoPublish: '$(System.DefaultWorkingDirectory)/notification.txt'
+      ArtifactName: 'PushNotification'
+      publishLocation: 'Container'
