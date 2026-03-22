@@ -3,8 +3,7 @@ on:
     branches:
       - dev
 
-pool:
-  vmImage: 'ubuntu-latest'
+
 
 steps:
  - script: 
