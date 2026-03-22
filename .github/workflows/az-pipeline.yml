@@ -9,7 +9,7 @@ steps:
  - script: 
   - task: PublishBuildArtifacts@1
    displayName: 'Publish notification as artifact'
-    inputs:
+   inputs:
      PathtoPublish: '$(System.DefaultWorkingDirectory)/notification.txt'
-      ArtifactName: 'PushNotification'
-      publishLocation: 'Container'
+     ArtifactName: 'PushNotification'
+     publishLocation: 'Container'
