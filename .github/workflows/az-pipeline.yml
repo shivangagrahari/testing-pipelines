@@ -1,13 +1,14 @@
 on:
   push:
-    dev
+    branches:
+      - dev
 
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
  - script: 
-  - task: PublishBuildArtifacts@1
+ - task: PublishBuildArtifacts@1
    displayName: 'Publish notification as artifact'
    inputs:
      PathtoPublish: '$(System.DefaultWorkingDirectory)/notification.txt'
